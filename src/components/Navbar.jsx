@@ -8,7 +8,7 @@ import logo from '../assets/logo/CareerHub.png'
 const Navbar = () => {
     return (
         <div>
-            <div className="navbar bg-base-200">
+            <div className="navbar bg-violet-50">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -44,7 +44,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Button</a>
+                    <button className="btn bg-violet-700 text-white hover:bg-violet-500">Start Applying</button>
                 </div>
             </div>
         </div>

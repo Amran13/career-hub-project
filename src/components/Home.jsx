@@ -17,9 +17,9 @@ const Home = () => {
     // console.log(categories, featuredJobs)
     return (
         <div>
-            <div className="hero min-h-[550px] bg-base-200">
+            <div className="hero min-h-[550px] bg-violet-50">
                 <div className="hero-content flex-col lg:flex-row-reverse">
-                    <img src={user} className="w-1/2 rounded-lg shadow-2xl" />
+                    <img src={user} className="w-1/2 rounded-lg bg-violet-50 relative top-4" />
                     <div className='w-1/2'>
                         <h1 className="text-5xl font-bold">One Step <br /> Closer To Your <br /><span className='text-violet-500'>Dream Job</span></h1>
                         {/* <p className="py-6 text-4xl font-bold"></p> */}
