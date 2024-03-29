@@ -1,0 +1,11 @@
+.active {
+    text-decoration: underline;
+    background-color: aquamarine;
+}
+
+a {
+    margin-left: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 20px;
+}
