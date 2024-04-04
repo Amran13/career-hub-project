@@ -6,6 +6,10 @@ import Job from './Job';
 const Home = () => {
     const [categories, setCategories] = useState([]);
     const [featuredJobs, setFeaturedJobs] = useState([]);
+    const [showAll, setShowAll] = useState(false)
+    const handleShowAll = () => {
+        setShowAll(!showAll)
+    }
     useEffect(() => {
         fetch('categories.json')
             .then(res => res.json())
@@ -42,12 +46,16 @@ const Home = () => {
             {/* Feteared Job Section */}
             <div>
                 <h2 className='font-bold text-4xl mt-16 mb-6'>Featured Jobs</h2>
-                <p className='text-zinc-500'>Explore thousands of job opportunities with all the information you need. Its your future</p>
+                <p className='text-zinc-500 my-4'>Explore thousands of job opportunities with all the information you need. Its your future</p>
                 <div className='grid grid-cols-2 gap-12'>
                     {
-                        featuredJobs.map(item => <Job key={item.id} job={item} ></Job>)
+                        showAll ? featuredJobs.map(item => <Job key={item.id} job={item} ></Job>) : featuredJobs.slice(0, 4).map(item => <Job key={item.id} job={item} ></Job>)
+                        
                     }
                 </div>
+                <button className='btn bg-violet-700 my-6 text-white hover:bg-violet-500' onClick={handleShowAll}> {
+                    showAll ? 'Show Less' : 'Show All'
+                }  </button>
             </div>
 
         </div>
