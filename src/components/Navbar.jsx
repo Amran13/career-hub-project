@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import './Navbar.css';
 import logo from '../assets/logo/CareerHub.png'
+import { authContext } from './AuthProvider';
 
 
 
 const Navbar = () => {
+    const authInfo = useContext(authContext)
+    const {user, logOut} = authInfo;
+    const handleLogOut = () => {
+        logOut()
+        .then(result => console.log(result))
+        .catch(err => console.error(err))
+    }
     return (
         <div>
             <div className="navbar bg-violet-50">
@@ -24,6 +32,13 @@ const Navbar = () => {
                         <NavLink to="/blog" className={({isActive}) => isActive ? "active" : ""}>
                             Blogs
                         </NavLink>
+                        <NavLink to="/dashboard" className={({isActive}) => isActive ? "active" : ""}>
+                            Dashboard
+                        </NavLink>
+                        <NavLink to="/login" className={({isActive}) => isActive ? "active" : ""}>
+                            login
+                        </NavLink>
+                        
                         </ul>
                     </div>
                     <a className="btn btn-ghost text-xl">
@@ -41,10 +56,19 @@ const Navbar = () => {
                         <NavLink to="/blog" className={({isActive}) => isActive ? "active" : ""}>
                             Blogs
                         </NavLink>
+                        <NavLink to="/dashboard" className={({isActive}) => isActive ? "active" : ""}>
+                            Dashboard
+                        </NavLink>
+                        <NavLink to="/login" className={({isActive}) => isActive ? "active" : ""}>
+                            login
+                        </NavLink>
+                        
+                        
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <button className="btn bg-violet-700 text-white hover:bg-violet-500">Start Applying</button>
+                    {user ? <div> <p> {user.email} </p>  <button onClick={handleLogOut}>LogOut</button> </div> : <Link to="/login"><button className="btn bg-violet-700 text-white hover:bg-violet-500">Login</button></Link>}
+                    
                 </div>
             </div>
         </div>

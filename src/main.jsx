@@ -9,12 +9,17 @@ import Blog from './components/Blog.jsx'
 import JobDetails from './components/JobDetails.jsx'
 import Application from './components/Application.jsx'
 import NotFound from './components/NotFound'
+import Login from './components/Login'
+import Register from './components/Register'
+import AuthProvider from './components/AuthProvider'
+import PrivateRoute from './components/PrivateRoute'
+import Dashboard from './components/Dashboard'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Main></Main>,
-    errorElement : <NotFound></NotFound>,
+    errorElement: <NotFound></NotFound>,
     children: [
       {
         path: '/',
@@ -23,24 +28,38 @@ const router = createBrowserRouter([
       {
         path: '/application',
         element: <Application></Application>,
-        loader : () => fetch('/jobs.json')
+        loader: () => fetch('/jobs.json')
       },
       {
-        path : '/blog',
-        element : <Blog></Blog>
+        path: '/blog',
+        element: <Blog></Blog>
       },
       {
-        path : '/job/:id',
-        element : <JobDetails></JobDetails>,
-        loader : () => fetch('/jobs.json')
+        path: '/job/:id',
+        element: <JobDetails></JobDetails>,
+        loader: () => fetch('/jobs.json')
+      },
+      {
+        path: '/login',
+        element: <Login></Login>
+      },
+      {
+        path: '/register',
+        element: <Register></Register>
+      },
+      {
+        path: '/dashboard',
+        element: <PrivateRoute> <Dashboard></Dashboard> </PrivateRoute>
       }
     ],
-    
+
   }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <AuthProvider>
+      <RouterProvider router={router}></RouterProvider>
+    </AuthProvider>
   </React.StrictMode>,
 )

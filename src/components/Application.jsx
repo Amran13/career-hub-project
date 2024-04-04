@@ -17,7 +17,7 @@ const Application = () => {
             const jobApplied = [];
             console.log(loaderData.length)
             for (let i = 0; i < savedApplications.length; i++) {
-                const job = loaderData.find(item => item.id === parseInt(savedApplications[i]))
+                const job = loaderData.find(item => item.id === parseInt(savedApplications))
                 if (job) {
                     jobApplied.push(job)
                 }
