@@ -32,6 +32,9 @@ const Navbar = () => {
                         <NavLink to="/blog" className={({isActive}) => isActive ? "active" : ""}>
                             Blogs
                         </NavLink>
+                        <NavLink to="/add-application" className={({isActive}) => isActive ? "active" : ""}>
+                            Add
+                        </NavLink>
                         <NavLink to="/dashboard" className={({isActive}) => isActive ? "active" : ""}>
                             Dashboard
                         </NavLink>
@@ -56,14 +59,15 @@ const Navbar = () => {
                         <NavLink to="/blog" className={({isActive}) => isActive ? "active" : ""}>
                             Blogs
                         </NavLink>
+                        <NavLink to="/add-application" className={({isActive}) => isActive ? "active" : ""}>
+                            Add
+                        </NavLink>
                         <NavLink to="/dashboard" className={({isActive}) => isActive ? "active" : ""}>
                             Dashboard
                         </NavLink>
                         <NavLink to="/login" className={({isActive}) => isActive ? "active" : ""}>
                             login
                         </NavLink>
-                        
-                        
                     </ul>
                 </div>
                 <div className="navbar-end">

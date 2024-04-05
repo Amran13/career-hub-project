@@ -8,7 +8,16 @@ const Application = () => {
 
     const loaderData = useLoaderData();
     console.log(loaderData, jobs)
-    
+
+    const handleDelete = _id => {
+        fetch(`http://localhost:5000/applications/${_id}`, {
+            method : 'DELETE'
+        })
+        .then(result => console.log(result))
+        .catch(err => console.error(err))
+        const remaining = jobs.filter(item => item._id !== _id)
+        setJobs(remaining)
+    }    
     const savedApplications = getStoredCart();
     console.log(savedApplications)
     console.log(loaderData.length)
@@ -17,7 +26,8 @@ const Application = () => {
             const jobApplied = [];
             console.log(loaderData.length)
             for (let i = 0; i < savedApplications.length; i++) {
-                const job = loaderData.find(item => item.id === parseInt(savedApplications))
+                const job = loaderData.find(item => item._id == savedApplications[i])
+                console.log(job)
                 if (job) {
                     jobApplied.push(job)
                 }
@@ -33,7 +43,7 @@ const Application = () => {
             </h1>
             <div className='my-8'>
                 {
-                    jobs.map(job => <AppliedJob key={job.id} job={job}></AppliedJob>)
+                    jobs.map(job => <AppliedJob handleDelete={handleDelete} key={job._id} job={job}></AppliedJob>)
                 }
             </div>
 

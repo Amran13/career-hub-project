@@ -14,10 +14,12 @@ const Home = () => {
         fetch('categories.json')
             .then(res => res.json())
             .then(data => setCategories(data))
-        fetch('jobs.json')
+        fetch('http://localhost:5000/applications')
             .then(res => res.json())
             .then(data => setFeaturedJobs(data))
     }, [])
+
+    console.log(featuredJobs)
     // console.log(categories, featuredJobs)
     return (
         <div>
@@ -49,7 +51,7 @@ const Home = () => {
                 <p className='text-zinc-500 my-4'>Explore thousands of job opportunities with all the information you need. Its your future</p>
                 <div className='grid grid-cols-2 gap-12'>
                     {
-                        showAll ? featuredJobs.map(item => <Job key={item.id} job={item} ></Job>) : featuredJobs.slice(0, 4).map(item => <Job key={item.id} job={item} ></Job>)
+                        showAll ? featuredJobs.map(item => <Job key={item._id} job={item} ></Job>) : featuredJobs.slice(0, 4).map(item => <Job key={item.id} job={item} ></Job>)
                         
                     }
                 </div>

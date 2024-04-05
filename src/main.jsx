@@ -14,6 +14,7 @@ import Register from './components/Register'
 import AuthProvider from './components/AuthProvider'
 import PrivateRoute from './components/PrivateRoute'
 import Dashboard from './components/Dashboard'
+import CreateApplication from './components/CreateApplication'
 
 const router = createBrowserRouter([
   {
@@ -28,7 +29,7 @@ const router = createBrowserRouter([
       {
         path: '/application',
         element: <Application></Application>,
-        loader: () => fetch('/jobs.json')
+        loader: () => fetch('http://localhost:5000/applications')
       },
       {
         path: '/blog',
@@ -37,7 +38,7 @@ const router = createBrowserRouter([
       {
         path: '/job/:id',
         element: <JobDetails></JobDetails>,
-        loader: () => fetch('/jobs.json')
+        loader: () => fetch('http://localhost:5000/applications')
       },
       {
         path: '/login',
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: '/dashboard',
         element: <PrivateRoute> <Dashboard></Dashboard> </PrivateRoute>
+      },
+      {
+        path : '/add-application',
+        element : <CreateApplication></CreateApplication>
       }
     ],
 
