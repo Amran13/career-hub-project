@@ -52,14 +52,15 @@ const Home = () => {
                 <div className='grid grid-cols-2 gap-12'>
                     {
                         showAll ? featuredJobs.map(item => <Job key={item._id} job={item} ></Job>) : featuredJobs.slice(0, 4).map(item => <Job key={item.id} job={item} ></Job>)
-                        
+
                     }
                 </div>
+
                 <button className='btn bg-violet-700 my-6 text-white hover:bg-violet-500' onClick={handleShowAll}> {
                     showAll ? 'Show Less' : 'Show All'
-                }  </button>
+                }
+                </button>
             </div>
-
         </div>
     );
 };

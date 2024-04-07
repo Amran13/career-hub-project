@@ -15,6 +15,7 @@ import AuthProvider from './components/AuthProvider'
 import PrivateRoute from './components/PrivateRoute'
 import Dashboard from './components/Dashboard'
 import CreateApplication from './components/CreateApplication'
+import Users from './components/Users'
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
       {
         path : '/add-application',
         element : <CreateApplication></CreateApplication>
+      },
+      {
+        path : '/users',
+        element : <Users></Users>
       }
     ],
 

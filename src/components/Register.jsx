@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, json } from 'react-router-dom';
 import { authContext } from './AuthProvider';
 
 const Register = () => {
+
+
     const authInfo = useContext(authContext)
     const {createUser} = authInfo
      const handleRegister = event => {
@@ -11,12 +13,23 @@ const Register = () => {
         const name = form.name.value
         const email = form.email.value
         const password = form.password.value;
-        console.log(name, email, password)
+        const user = {name: name, email : email, password : password}
+        console.log(user)
 
         createUser(email, password)
         .then(result => {
             if(result.user.accessToken){
-                alert('User created successfully')
+                fetch('http://localhost:5000/users', {
+                    method : 'POST',
+                    headers : {
+                        'content-type' : 'application/json'
+                    },
+                    body : JSON.stringify(user) 
+                })
+                .then(res => {
+                    console.log('from db', res)
+                })
+                .catch(err => console.error(err))
             }
         })
         .catch(err => console.error(err))

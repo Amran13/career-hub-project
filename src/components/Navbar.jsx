@@ -41,6 +41,9 @@ const Navbar = () => {
                         <NavLink to="/login" className={({isActive}) => isActive ? "active" : ""}>
                             login
                         </NavLink>
+                        <NavLink to="/users" className={({isActive}) => isActive ? "active" : ""}>
+                            Users
+                        </NavLink>
                         
                         </ul>
                     </div>
@@ -67,6 +70,9 @@ const Navbar = () => {
                         </NavLink>
                         <NavLink to="/login" className={({isActive}) => isActive ? "active" : ""}>
                             login
+                        </NavLink>
+                        <NavLink to="/users" className={({isActive}) => isActive ? "active" : ""}>
+                            Users
                         </NavLink>
                     </ul>
                 </div>
